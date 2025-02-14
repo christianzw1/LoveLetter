@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dia dos Namorados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body, html {
+      height: 100%;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .container {
+      text-align: center;
+      position: relative;
+    }
+    
+    /* Carta pulsante */
+    .card {
+      width: 400px;
+      height: 500px;
+      background-image: url('./imagem/new.webp'); /* substitua pelo caminho da sua imagem */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      animation: pulsate 2s infinite;
+      transition: transform 0.5s;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .card.opened {
+      animation: none;
+      transform: rotateY(180deg);
+    }
+    
+    @keyframes pulsate {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Estilo da carta interna */
+    .letter {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    
+    .letter.show {
+      display: block;
+      opacity: 1;
+    }
+    
+    .letter p {
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+      line-height: 1.5;
+      color: #333;
+      text-align: center;
+    }
+    
+    .letter p strong {
+      font-weight: bold;
+      color: #000;
+    }
+    
+    @media(max-width: 500px) {
+      .card, .letter {
+        width: 90%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Carta pulsante -->
+    <div class="card" id="card"></div>
+    <!-- Conteúdo da carta -->
+    <div class="letter" id="letter">
+      <p>
+        <strong>Happy Valentine's Day, my love!</strong><br><br>
+        To be honest, I'm not usually one to celebrate special dates like this. However, you are such an important person in my life that I realized this day is absolutely worth celebrating—because you are worth it. I <strong>love you, Darielle, more than anything</strong>. Our relationship has been one of the best things to happen to me this year, and I want to keep nurturing it, strengthening our bond each and every day, little by little. I dream of building a future and a family with you, supporting our dreams and aspirations, always striving for the best for both of us.<br><br>
+        If I ever did anything wrong or upset you in any way, please forgive me. That was never my intention. I want to keep improving our communication, resolving any misunderstandings, and growing together in love and trust.<br><br>
+        May our love continue to bloom like the most beautiful flowers in spring, bringing color and joy to our lives. I <strong>love you forever</strong>.<br><br>
+        "And now these three remain: faith, hope and love. But the greatest of these is love." - 1 Corinthians 13:13
+      </p>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('card').addEventListener('click', function() {
+      this.classList.add('opened');
+      setTimeout(function() {
+        document.getElementById('letter').classList.add('show');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
